@@ -10,7 +10,11 @@ function App() {
   const [submitted, setSubmitted] = useState(false)
 
   const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+    if (id === 'top') {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    } else {
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+    }
     setMenuOpen(false)
   }
 
@@ -25,7 +29,6 @@ function App() {
         }
       }
     }
-
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
@@ -36,7 +39,6 @@ function App() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Using mailto link for simplicity
     window.location.href = `mailto:btn.daniel@yahoo.com?subject=Contact from ${formData.name}&body=${formData.message}`
     setSubmitted(true)
     setFormData({ name: '', email: '', message: '' })
@@ -46,7 +48,9 @@ function App() {
     <>
       {/* Navbar */}
       <nav className="navbar">
-        <span className="nav-name">Daniel Botnarenco</span>
+        <span className="nav-name" onClick={() => scrollTo('top')} style={{ cursor: 'pointer' }}>
+          Daniel Botnarenco
+        </span>
         <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
           {sections.map((s) => (
             <button
@@ -91,29 +95,61 @@ function App() {
 
       {/* Experience */}
       <section id="experience" className="section fade-in">
-        <h2>Experience</h2>
+        <h2>Work Experience</h2>
+
         <div className="item">
-          <h3>Software Engineer – ASML BV</h3>
-          <span>09/2023 – 09/2025</span>
+          <h3>Software Engineer – ASML BV – Veldhoven, Netherlands</h3>
+          <span>01/09/2023 – 01/09/2025</span>
           <ul>
-            <li>Owned core modules of the Expose Sequence in DUV lithography systems.</li>
-            <li>Delivered software executed on every wafer across the global DUV fleet.</li>
-            <li>Developed hard real-time C++/C software with strict timing constraints.</li>
-            <li>Led impact analysis, mentored teammates, and represented components.</li>
+            <li>Owned and developed core modules within the Expose Sequence of ASML’s DUV systems.</li>
+            <li>Delivered software changes executed on every wafer processed worldwide.</li>
+            <li>Engineered high-performance, low-latency C++/C solutions meeting hard real-time constraints.</li>
+            <li>Involved in all stages of wafer processing, interfacing with optics, motion control, and sensors.</li>
+            <li>Led creation of Software Impact Analysis documents outlining benefits, drawbacks, regression/progression considerations, and cross-component implications.</li>
+            <li>Mentored new team members, performed code reviews, maintained high code quality standards.</li>
+            <li>Acted as component representative in stakeholder meetings, aligning cross-team priorities.</li>
+            <li>Tools: Git, ClearCase, JIRA, Jenkins, Valgrind, GDB, GoogleTest, Python, Agile Scrum</li>
           </ul>
-          <p className="tech">
-            C++, C, Git, Jenkins, JIRA, GDB, Valgrind, GoogleTest, Python, Agile Scrum
-          </p>
         </div>
+
         <div className="item">
           <h3>Freelance Software Engineer</h3>
-          <span>01/2023 – Present</span>
+          <span>01/01/2023 – Present</span>
           <ul>
-            <li>Built React, Laravel, and .NET applications for multiple clients.</li>
-            <li>Developed real-time tracking systems and education platforms.</li>
-            <li>Delivered SEO-optimized landing pages and cross-device solutions.</li>
+            <li>Delivered custom software solutions using React, Laravel, and .NET.</li>
+            <li>Built a real-time .NET web app tracking multiple locations with map integration.</li>
+            <li>Created Laravel-based education platforms with audio submissions and gamified UX.</li>
+            <li>Delivered lightweight SEO-optimized landing pages for small businesses.</li>
+            <li>Ensured cross-device accessibility, backend stability, and intuitive interfaces.</li>
+            <li>Collaborated directly with stakeholders using Agile-like workflow.</li>
+            <li>Technologies: .NET, C#, Laravel, PHP, React, JavaScript, MySQL, REST APIs, HTML, CSS</li>
           </ul>
-          <p className="tech">React, .NET, C#, Laravel, PHP, MySQL, REST APIs</p>
+        </div>
+
+        <div className="item">
+          <h3>Full Stack Developer – Cloudmazing BV – Goor, Netherlands</h3>
+          <span>01/10/2022 – 01/02/2023</span>
+          <ul>
+            <li>Developed full-featured web apps using Laravel and React.</li>
+            <li>Participated in requirement gathering sessions and designed database schemas.</li>
+            <li>Built responsive, interactive frontend components aligned with UX principles.</li>
+            <li>Handled end-to-end feature development, from architecture to testing.</li>
+            <li>Collaborated in a small team, owning separate client projects but sharing knowledge.</li>
+            <li>Technologies: Laravel, PHP, React, JavaScript, MySQL, Eloquent ORM, REST APIs, HTML, CSS</li>
+          </ul>
+        </div>
+
+        <div className="item">
+          <h3>Frontend Developer – Halloy BV – Hengelo, Netherlands</h3>
+          <span>01/06/2021 – 01/01/2022</span>
+          <ul>
+            <li>Designed complex interactive UIs using React, React Native, and TypeScript.</li>
+            <li>Developed a custom 3D visualization system for warehouse logistics.</li>
+            <li>Built 3D renderer from scratch using advanced geometric computations.</li>
+            <li>Integrated frontend with backend APIs ensuring synchronized performant data flows.</li>
+            <li>Worked in a small Agile team, owning the frontend stack and contributing to sprints.</li>
+            <li>Technologies: React, React Native, TypeScript, JavaScript, REST APIs, CSS Modules</li>
+          </ul>
         </div>
       </section>
 

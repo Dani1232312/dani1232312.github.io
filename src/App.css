@@ -43,6 +43,7 @@ body {
 
 .nav-name {
   font-weight: bold;
+  font-size: 1.25rem;
 }
 
 .mobile-menu-btn {
@@ -71,7 +72,7 @@ body {
 
 /* Sections */
 .section {
-  padding: 96px 20%;
+  padding: 120px 15%;
   min-height: 100vh;
   opacity: 0;
   transform: translateY(30px);
@@ -158,8 +159,10 @@ body {
   opacity: 0.8;
 }
 
+/* Contact */
 .contact {
-  background: #f8fafc;
+  background: #1e293b; /* dark background */
+  color: white;
 }
 
 .contact-form {
@@ -177,13 +180,15 @@ body {
   border-radius: 6px;
   font-size: 1rem;
   resize: vertical;
+  background: white;
+  color: black;
 }
 
 .contact-form button {
   padding: 0.75rem;
   border: none;
-  background-color: #0f172a;
-  color: white;
+  background-color: #61dafb;
+  color: #0f172a;
   border-radius: 6px;
   font-size: 1rem;
   cursor: pointer;
@@ -191,21 +196,27 @@ body {
 }
 
 .contact-form button:hover {
-  background-color: #61dafb;
-  color: #0f172a;
+  background-color: #0f172a;
+  color: #61dafb;
 }
 
 .success-msg {
-  color: green;
+  color: #10b981;
   font-weight: bold;
   margin-bottom: 1rem;
   text-align: center;
 }
 
 /* Responsive */
+@media (max-width: 1024px) {
+  .section {
+    padding: 100px 8%;
+  }
+}
+
 @media (max-width: 768px) {
   .section {
-    padding: 80px 10%;
+    padding: 80px 5%;
   }
   .nav-links {
     display: none;
