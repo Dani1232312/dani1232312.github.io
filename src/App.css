@@ -1,17 +1,27 @@
+/* =========================
+   GLOBAL RESET
+========================= */
 * {
   box-sizing: border-box;
 }
 
+html,
 body {
   margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden; /* critical */
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   scroll-behavior: smooth;
 }
 
-/* Navbar */
+/* =========================
+   NAVBAR
+========================= */
 .navbar {
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
   height: 64px;
   background: #0f172a;
@@ -21,6 +31,11 @@ body {
   justify-content: space-between;
   padding: 0 2rem;
   z-index: 1000;
+}
+
+.nav-name {
+  font-weight: bold;
+  font-size: 1.25rem;
 }
 
 .nav-links button {
@@ -41,11 +56,6 @@ body {
   color: #61dafb;
 }
 
-.nav-name {
-  font-weight: bold;
-  font-size: 1.25rem;
-}
-
 .mobile-menu-btn {
   display: none;
   background: none;
@@ -56,13 +66,13 @@ body {
 }
 
 .nav-links.open {
-  display: flex;
-  flex-direction: column;
   position: absolute;
   top: 64px;
   left: 0;
   width: 100%;
   background: #0f172a;
+  display: flex;
+  flex-direction: column;
   padding: 1rem 0;
 }
 
@@ -70,36 +80,37 @@ body {
   margin: 0.5rem 0;
 }
 
-/* Sections */
+/* =========================
+   SECTIONS (FIXED)
+========================= */
 .section {
   width: 100%;
   min-height: 100vh;
+  padding: 120px 0 80px; /* navbar spacing */
 }
 
-/* Section content fade-in */
-.section-content.fade-in {
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeUp 0.8s ease forwards;
+/* Center ONLY the content */
+.section-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
 }
 
-/* Hero */
+/* =========================
+   HERO (FULL BLEED)
+========================= */
 .hero {
   position: relative;
   width: 100%;
   min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
   color: white;
+  overflow: hidden;
 }
 
 .hero-bg {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
+  inset: 0;
+  width: 100%;
   height: 100%;
   background: linear-gradient(180deg, #0f172a, #020617);
   z-index: 0;
@@ -108,14 +119,8 @@ body {
 .hero-content {
   position: relative;
   z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   text-align: center;
   padding-top: 120px;
-
-  opacity: 0;
-  transform: translateY(30px);
   animation: fadeUp 1s ease forwards;
 }
 
@@ -124,35 +129,118 @@ body {
   margin-bottom: 0.5rem;
 }
 
-.location, .about {
+.location,
+.about {
   margin: 0.5rem 0;
 }
 
-@keyframes fadeUp {
-  0% { opacity: 0; transform: translateY(20px); }
-  100% { opacity: 1; transform: translateY(0); }
+/* =========================
+   CONTACT (FULL BLEED)
+========================= */
+.contact {
+  width: 100%;
+  background: #1e293b;
+  color: white;
 }
 
-/* Items, timeline, contact remain unchanged */
-.item { margin-bottom: 2rem; }
-.item h3 { margin-bottom: 0.25rem; }
-.item span { font-size: 0.9rem; opacity: 0.7; }
-.tech { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; font-style: italic; opacity: 0.8; }
-.tech span { background-color: #0f172a; color: #61dafb; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.85rem; font-weight: 500; }
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 500px;
+  margin: 1rem auto 0;
+}
 
-.contact { background: #1e293b; color: white; }
-.contact-form { display: flex; flex-direction: column; gap: 1rem; max-width: 500px; margin: 1rem auto 0; }
-.contact-form input, .contact-form textarea { padding: 0.75rem; border: 1px solid #ccc; border-radius: 6px; font-size: 1rem; resize: vertical; background: white; color: black; }
-.contact-form button { padding: 0.75rem; border: none; background-color: #61dafb; color: #0f172a; border-radius: 6px; font-size: 1rem; cursor: pointer; transition: background 0.3s; }
-.contact-form button:hover { background-color: #0f172a; color: #61dafb; }
-.success-msg { color: #10b981; font-weight: bold; margin-bottom: 1rem; text-align: center; }
+.contact-form input,
+.contact-form textarea {
+  padding: 0.75rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
 
-.education-timeline { position: relative; margin-left: 2rem; padding-left: 2rem; }
-.education-timeline::before { content: ''; position: absolute; top: 0; left: 15px; width: 4px; height: 100%; background-color: #61dafb; }
-.education-item { position: relative; margin-bottom: 2rem; }
-.education-item::before { content: '🎓'; position: absolute; left: -2rem; top: 0; font-size: 1.5rem; }
+.contact-form button {
+  padding: 0.75rem;
+  border: none;
+  border-radius: 6px;
+  background: #61dafb;
+  color: #0f172a;
+  font-size: 1rem;
+  cursor: pointer;
+}
 
-/* Responsive */
-@media (max-width: 1440px) { .section { padding: 100px 5%; } }
-@media (max-width: 1024px) { .section { padding: 80px 5%; } .section-content { padding: 0 5%; } }
-@media (max-width: 768px) { .section { padding: 60px 3%; } .section-content { padding: 0 3%; } .nav-links { display: none; } .mobile-menu-btn { display: block; } }
+.contact-form button:hover {
+  background: #0f172a;
+  color: #61dafb;
+}
+
+.success-msg {
+  color: #10b981;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* =========================
+   TIMELINES / TECH
+========================= */
+.tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.tech span {
+  background: #0f172a;
+  color: #61dafb;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+.education-timeline {
+  position: relative;
+  margin-left: 2rem;
+  padding-left: 2rem;
+}
+
+.education-timeline::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: #61dafb;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .mobile-menu-btn {
+    display: block;
+  }
+
+  .section {
+    padding: 100px 0 60px;
+  }
+}
