@@ -85,16 +85,24 @@ function App() {
       <section id="education" className="section">
         <div className="section-content fade-in">
           <h2>Education</h2>
-          <div className="education-timeline">
-            <div className="education-item">
-              <h3>Project Management</h3>
-              <span>2023 – 2025 · National School of Political and Administrative Studies</span>
-              <p>Bucharest, Romania</p>
+
+          <div className="timeline">
+            <div className="timeline-item">
+              <div className="timeline-dot">🎓</div>
+              <div className="timeline-content">
+                <h3>Project Management</h3>
+                <span>2023 – 2025 · National School of Political and Administrative Studies</span>
+                <p>Bucharest, Romania</p>
+              </div>
             </div>
-            <div className="education-item">
-              <h3>Computer Science</h3>
-              <span>2019 – 2023 · University of Twente</span>
-              <p>Enschede, Netherlands</p>
+
+            <div className="timeline-item">
+              <div className="timeline-dot">🎓</div>
+              <div className="timeline-content">
+                <h3>Computer Science</h3>
+                <span>2019 – 2023 · University of Twente</span>
+                <p>Enschede, Netherlands</p>
+              </div>
             </div>
           </div>
         </div>
@@ -105,80 +113,92 @@ function App() {
         <div className="section-content fade-in">
           <h2>Work Experience</h2>
 
-          <div className="experience-timeline">
+          <div className="timeline">
             {/* ASML */}
-            <div className="experience-item">
-              <h3>Software Engineer – ASML BV</h3>
-              <span>01/09/2023 – 01/09/2025 · Veldhoven, Netherlands</span>
-              <ul>
-                <li>Owned and developed core modules within the Expose Sequence of ASML’s DUV systems.</li>
-                <li>Delivered software changes executed on every wafer processed worldwide.</li>
-                <li>Engineered high-performance, low-latency C++/C solutions meeting hard real-time constraints.</li>
-                <li>Involved in all stages of wafer processing, interfacing with optics, motion control, and sensors.</li>
-                <li>Led creation of Software Impact Analysis documents outlining benefits, drawbacks, regression/progression considerations, and cross-component implications.</li>
-                <li>Mentored new team members, performed code reviews, maintained high code quality standards.</li>
-                <li>Acted as component representative in stakeholder meetings, aligning cross-team priorities.</li>
-              </ul>
-              <p className="tech">
-                {['C++', 'C', 'Git', 'Jenkins', 'JIRA', 'GDB', 'Valgrind', 'GoogleTest', 'Python', 'Agile Scrum'].map(t => (
-                  <span key={t}>{t}</span>
-                ))}
-              </p>
+            <div className="timeline-item">
+              <div className="timeline-dot">🚀</div>
+              <div className="timeline-content">
+                <h3>Software Engineer – ASML BV</h3>
+                <span>09/2023 – 09/2025 · Veldhoven, Netherlands</span>
+                <ul>
+                  <li>Owned and developed core modules within the Expose Sequence of ASML’s DUV systems.</li>
+                  <li>Delivered software changes executed on every wafer processed worldwide.</li>
+                  <li>Engineered high-performance, low-latency C++/C solutions meeting hard real-time constraints.</li>
+                  <li>Involved in all stages of wafer processing, interfacing with optics, motion control, and sensors.</li>
+                  <li>Led creation of Software Impact Analysis documents outlining benefits, drawbacks, regression/progression considerations, and cross-component implications.</li>
+                  <li>Mentored new team members, performed code reviews, maintained high code quality standards.</li>
+                  <li>Acted as component representative in stakeholder meetings, aligning cross-team priorities.</li>
+                </ul>
+                <p className="tech">
+                  {['C++', 'C', 'Git', 'Jenkins', 'JIRA', 'GDB', 'Valgrind', 'GoogleTest', 'Python', 'Agile Scrum'].map(t => (
+                    <span key={t}>{t}</span>
+                  ))}
+                </p>
+              </div>
             </div>
 
             {/* Freelance */}
-            <div className="experience-item">
-              <h3>Freelance Software Engineer</h3>
-              <span>01/01/2023 – Present</span>
-              <ul>
-                <li>Delivered custom software solutions using React, Laravel, and .NET.</li>
-                <li>Built a real-time .NET web app tracking multiple locations with map integration.</li>
-                <li>Created Laravel-based education platforms with audio submissions and gamified UX.</li>
-                <li>Delivered lightweight SEO-optimized landing pages for small businesses.</li>
-                <li>Ensured cross-device accessibility, backend stability, and intuitive interfaces.</li>
-                <li>Collaborated directly with stakeholders using Agile-like workflow.</li>
-              </ul>
-              <p className="tech">
-                {['.NET', 'C#', 'Laravel', 'PHP', 'React', 'JavaScript', 'MySQL', 'REST APIs', 'HTML', 'CSS'].map(t => (
-                  <span key={t}>{t}</span>
-                ))}
-              </p>
+            <div className="timeline-item">
+              <div className="timeline-dot">🧑‍💻</div>
+              <div className="timeline-content">
+                <h3>Freelance Software Engineer</h3>
+                <span>01/2023 – Present</span>
+                <ul>
+                  <li>Delivered custom software solutions using React, Laravel, and .NET.</li>
+                  <li>Built a real-time .NET web app tracking multiple locations with map integration.</li>
+                  <li>Created Laravel-based education platforms with audio submissions and gamified UX.</li>
+                  <li>Delivered lightweight SEO-optimized landing pages for small businesses.</li>
+                  <li>Ensured cross-device accessibility, backend stability, and intuitive interfaces.</li>
+                  <li>Collaborated directly with stakeholders using Agile-like workflow.</li>
+                </ul>
+                <p className="tech">
+                  {['.NET', 'C#', 'Laravel', 'PHP', 'React', 'JavaScript', 'MySQL', 'REST APIs', 'HTML', 'CSS'].map(t => (
+                    <span key={t}>{t}</span>
+                  ))}
+                </p>
+              </div>
             </div>
 
             {/* Cloudmazing */}
-            <div className="experience-item">
-              <h3>Full Stack Developer – Cloudmazing BV</h3>
-              <span>01/10/2022 – 01/02/2023 · Goor, Netherlands</span>
-              <ul>
-                <li>Developed full-featured web apps using Laravel and React.</li>
-                <li>Participated in requirement gathering sessions and designed database schemas.</li>
-                <li>Built responsive, interactive frontend components aligned with UX principles.</li>
-                <li>Handled end-to-end feature development, from architecture to testing.</li>
-                <li>Collaborated in a small team, owning separate client projects but sharing knowledge.</li>
-              </ul>
-              <p className="tech">
-                {['Laravel', 'PHP', 'React', 'JavaScript', 'MySQL', 'Eloquent ORM', 'REST APIs', 'HTML', 'CSS'].map(t => (
-                  <span key={t}>{t}</span>
-                ))}
-              </p>
+            <div className="timeline-item">
+              <div className="timeline-dot">💼</div>
+              <div className="timeline-content">
+                <h3>Full Stack Developer – Cloudmazing BV</h3>
+                <span>10/2022 – 02/2023 · Netherlands</span>
+                <ul>
+                  <li>Developed full-featured web apps using Laravel and React.</li>
+                  <li>Participated in requirement gathering sessions and designed database schemas.</li>
+                  <li>Built responsive, interactive frontend components aligned with UX principles.</li>
+                  <li>Handled end-to-end feature development, from architecture to testing.</li>
+                  <li>Collaborated in a small team, owning separate client projects but sharing knowledge.</li>
+                </ul>
+                <p className="tech">
+                  {['Laravel', 'PHP', 'React', 'JavaScript', 'MySQL', 'Eloquent ORM', 'REST APIs', 'HTML', 'CSS'].map(t => (
+                    <span key={t}>{t}</span>
+                  ))}
+                </p>
+              </div>
             </div>
 
             {/* Halloy */}
-            <div className="experience-item">
-              <h3>Frontend Developer – Halloy BV</h3>
-              <span>01/06/2021 – 01/01/2022 · Hengelo, Netherlands</span>
-              <ul>
-                <li>Designed complex interactive UIs using React, React Native, and TypeScript.</li>
-                <li>Developed a custom 3D visualization system for warehouse logistics.</li>
-                <li>Built 3D renderer from scratch using advanced geometric computations.</li>
-                <li>Integrated frontend with backend APIs ensuring synchronized performant data flows.</li>
-                <li>Worked in a small Agile team, owning the frontend stack and contributing to sprints.</li>
-              </ul>
-              <p className="tech">
+            <div className="timeline-item">
+              <div className="timeline-dot">🎨</div>
+              <div className="timeline-content">
+                <h3>Frontend Developer – Halloy BV</h3>
+                <span>06/2021 – 01/2022 · Netherlands</span>
+                <ul>
+                  <li>Designed complex interactive UIs using React, React Native, and TypeScript.</li>
+                  <li>Developed a custom 3D visualization system for warehouse logistics.</li>
+                  <li>Built 3D renderer from scratch using advanced geometric computations.</li>
+                  <li>Integrated frontend with backend APIs ensuring synchronized performant data flows.</li>
+                  <li>Worked in a small Agile team, owning the frontend stack and contributing to sprints.</li>
+                </ul>
+                <p className="tech">
                 {['React', 'React Native', 'TypeScript', 'JavaScript', 'REST APIs', 'CSS Modules'].map(t => (
                   <span key={t}>{t}</span>
                 ))}
               </p>
+              </div>
             </div>
           </div>
         </div>
