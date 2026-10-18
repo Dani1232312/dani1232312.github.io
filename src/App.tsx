@@ -227,6 +227,23 @@ function App() {
             </a>
           </div>
 
+          <div className="project-card">
+            <h3>Lavender Crypts</h3>
+            <p>
+              A 3D dungeon crawler in the browser. Every floor is a freshly generated maze of
+              halls: pick one of 12 heroes, fight through the dead with melee, arcane bolts and
+              dashes, beat the Warden and take the stairs up.
+            </p>
+            <p className="tech">
+              {['JavaScript', 'Three.js', 'WebGL', 'glTF', 'Python'].map(t => (
+                <span key={t}>{t}</span>
+              ))}
+            </p>
+            <a className="project-link" href={`${import.meta.env.BASE_URL}crypt-runner/`} target="_blank" rel="noopener">
+              Open Lavender Crypts →
+            </a>
+          </div>
+
           <ul>
             <li>Real-time multi-location tracking web application (.NET)</li>
             <li>Education platform with audio submissions & gamified UX (Laravel)</li>

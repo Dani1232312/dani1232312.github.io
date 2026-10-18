@@ -14,12 +14,17 @@ if [ -f "$src/package.json" ]; then
   exit 0
 fi
 
+# the page is <name>.html, index.html, or else the only .html file at the repo root
 page=
 for f in "$src/$name.html" "$src/index.html"; do
   if [ -f "$f" ]; then page=$f; break; fi
 done
 if [ -z "$page" ]; then
-  echo "::warning::$name has no package.json, $name.html or index.html yet; skipping it"
+  pages=("$src"/*.html)
+  if [ ${#pages[@]} -eq 1 ] && [ -f "${pages[0]}" ]; then page=${pages[0]}; fi
+fi
+if [ -z "$page" ]; then
+  echo "::warning::$name has no package.json, $name.html, index.html or single .html file; skipping it"
   exit 0
 fi
 
@@ -28,7 +33,7 @@ fi
 fix='<style>[hidden]{display:none!important}</style>'
 mkdir -p "$out"
 if grep -qi '<!doctype' "$page"; then
-  sed "0,/<head[^>]*>/s//&\n$fix/I" "$page" > "$out/page.html"
+  sed "0,/<!doctype[^>]*>/I s##&\n$fix#" "$page" > "$out/page.html"
 else
   {
     printf '<!doctype html>\n<html lang="en">\n<head>\n<meta charset="UTF-8">\n'
