@@ -209,6 +209,24 @@ function App() {
       <section id="projects" className="section">
         <div className="section-content fade-in">
           <h2>Projects</h2>
+
+          <div className="project-card">
+            <h3>Polderstad</h3>
+            <p>
+              A 3D city builder set in a Dutch polder, running entirely in the browser. Lay out
+              zones, roads, rail and waterways, and watch trains, cars, bikes and boats move
+              through the town.
+            </p>
+            <p className="tech">
+              {['JavaScript', 'Three.js', 'WebGL', 'HTML', 'CSS'].map(t => (
+                <span key={t}>{t}</span>
+              ))}
+            </p>
+            <a className="project-link" href={`${import.meta.env.BASE_URL}polderstad/`} target="_blank" rel="noopener">
+              Open Polderstad →
+            </a>
+          </div>
+
           <ul>
             <li>Real-time multi-location tracking web application (.NET)</li>
             <li>Education platform with audio submissions & gamified UX (Laravel)</li>
