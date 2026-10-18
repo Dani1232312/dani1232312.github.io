@@ -3,9 +3,18 @@ name: Build and Deploy to gh-pages
 on:
   push:
     branches: [main]
+  repository_dispatch:
+    # fired by the project repos when they push to main
+    types: [project-updated, polderstad-updated]
+  workflow_dispatch:
 
 permissions:
   contents: write
+
+# a project push and a site push close together would otherwise race to publish
+concurrency:
+  group: deploy
+  cancel-in-progress: false
 
 jobs:
   deploy:
@@ -13,12 +22,32 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # private project repos, read with a fine-grained token that has Contents: Read-only on them
+      - name: Check out Polderstad
+        uses: actions/checkout@v4
+        with:
+          repository: dani1232312/polderstad
+          token: ${{ secrets.PROJECTS_READ_TOKEN }}
+          path: _projects/polderstad
+
+      - name: Check out Crypt Runner
+        uses: actions/checkout@v4
+        with:
+          repository: dani1232312/crypt-runner
+          token: ${{ secrets.PROJECTS_READ_TOKEN }}
+          path: _projects/crypt-runner
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
 
       - run: npm ci
       - run: npm run build
+
+      - name: Add projects to the site
+        run: |
+          scripts/add-project.sh polderstad _projects/polderstad
+          scripts/add-project.sh crypt-runner _projects/crypt-runner
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
